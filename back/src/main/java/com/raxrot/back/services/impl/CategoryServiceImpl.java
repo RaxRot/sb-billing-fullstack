@@ -1,10 +1,11 @@
-package com.raxrot.back.services;
+package com.raxrot.back.services.impl;
 
 import com.raxrot.back.dtos.CategoryRequest;
 import com.raxrot.back.dtos.CategoryResponse;
 import com.raxrot.back.exceptions.ApiException;
 import com.raxrot.back.models.Category;
 import com.raxrot.back.repositories.CategoryRepository;
+import com.raxrot.back.services.CategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
