@@ -13,25 +13,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
-private final CategoryService categoryService;
-public CategoryController(CategoryService categoryService) {
-    this.categoryService = categoryService;
-}
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
     @PostMapping
     public ResponseEntity<CategoryResponse> create(@Valid @RequestBody CategoryRequest request) {
-        CategoryResponse response=categoryService.create(request);
+        CategoryResponse response = categoryService.create(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> getAllCategories() {
-    List<CategoryResponse> response=categoryService.getAllCategories();
-    return new ResponseEntity<>(response, HttpStatus.OK);
+        List<CategoryResponse> response = categoryService.getAllCategories();
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{categoryId}")
     public ResponseEntity<Void> deleteCategoryById(@PathVariable String categoryId) {
         categoryService.deleteCategoryById(categoryId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }
